@@ -10,7 +10,7 @@ class AttributeTest(TestCase):
 
     def setUp(self):
         class CustomChoices(AttributeChoices):
-            foo = 'bar2'
+            foo = 'bar'
 
         self.choices = CustomChoices
 
