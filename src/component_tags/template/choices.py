@@ -3,5 +3,5 @@ from enum import Enum
 __all__ = ['AttributeChoices']
 
 
-class AttributeChoices(Enum):
+class AttributeChoices(str, Enum):
     pass

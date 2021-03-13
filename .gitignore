@@ -56,7 +56,7 @@ MANIFEST
 # Django
 /*.sqlite3
 /static/
-/templatetags/*
+/src/component_tags/templatetags/test_tags.py
 /config/
 /templates/*
 /htmlcov/

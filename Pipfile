@@ -9,11 +9,6 @@ django = "*"
 [dev-packages]
 django-extensions = "*"
 django-debug-toolbar = "*"
-coverage = "*"
-twine = "*"
-setuptools = "*"
-setuptools-scm = "*"
-wheel = "*"
 
 [requires]
 python_version = "3.9"

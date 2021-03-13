@@ -3,7 +3,6 @@ from django.utils.safestring import SafeText, SafeString
 __all__ = [
     'format_value',
     'format_classes',
-    'format_options',
     'format_attributes',
 ]
 
@@ -18,23 +17,28 @@ def format_value(value, context=None):
 def format_classes(classes, context=None):
     if isinstance(classes, SafeString):
         return classes
+
     elements = []
+
     if not classes:
         return None
+
     for value in classes:
         value = format_value(value, context)
         if value is not None:
             elements.append(value)
+
     return SafeText(" ".join(elements))
 
 
-def format_options(options, context=None) -> SafeText:
-    elements = []
-    for (key, value) in options.items():
-        value = format_value(value, context)
-        if value is not None:
-            elements.append("{}: {}".format(key, value))
-    return SafeText("; ".join(elements).lower())
+# TODO: remove this function
+# def format_options(options, context=None) -> SafeText:
+#     elements = []
+#     for (key, value) in options.items():
+#         value = format_value(value, context)
+#         if value is not None:
+#             elements.append("{}: {}".format(key, value))
+#     return SafeText("; ".join(elements).lower())
 
 
 def format_attributes(properties, context=None) -> SafeText:
@@ -52,4 +56,5 @@ def format_attributes(properties, context=None) -> SafeText:
             value = format_value(value, context)
             if value is not None:
                 elements.append('{}="{}"'.format(key, value))
+
     return SafeText(" ".join(elements))

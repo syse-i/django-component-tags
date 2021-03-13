@@ -1,9 +1,11 @@
 from .parser import parse_component
+from functools import wraps
 
 __all__ = ['component_wrapper']
 
 
 def component_wrapper(name, component_node):
+    @wraps(component_node)
     def func(parser, token):
         nodelist = parser.parse(('end%s' % name,))
         parser.delete_first_token()

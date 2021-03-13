@@ -29,7 +29,7 @@ class Library(BaseLibrary):
                     self.tags[name] = func
                     return func
                 return super().tag_function(name)
-            # @register.tag('somename') or @register.tag(name='somename')
+            # @register.tag('foobar') or @register.tag(name='foobar')
             else:
                 tag_func = super().tag
 
@@ -39,7 +39,7 @@ class Library(BaseLibrary):
                     return tag_func(name, f)
 
                 return dec
-        # register.tag('somename', somefunc)
+        # register.tag('foobar', foobar)
         elif name is not None and compile_function is not None:
             if isinstance(compile_function, BaseComponent):
                 name, func = component_wrapper(name, compile_function)

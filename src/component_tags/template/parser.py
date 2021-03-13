@@ -56,7 +56,7 @@ def parse_component(nodelist, token, parser):
 
     while slot_nodes:
         pos, node = slot_nodes.pop()
-        name = getattr(node, '_name', pos)
+        name = getattr(node, 'slot_name', pos)
         key = f'slot_{pos if name is None else name}'
         slots[key] = node
         del nodelist[pos]

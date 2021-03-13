@@ -169,6 +169,7 @@ class ComponentContext(TagContext):
                  isolated: bool = True, **kwargs):
         super().__init__(attributes, initial=initial, isolated=isolated, **kwargs)
         self._nodelist = nodelist
+
         if 'request' not in self and getattr(self._wrap, 'request', False):
             self['request'] = self._wrap.request
 
