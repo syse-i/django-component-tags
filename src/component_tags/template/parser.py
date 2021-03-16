@@ -6,15 +6,16 @@ from .components import Slot
 
 def parse_component(nodelist, token, parser):
     """
-    Load a template and render it with the current context. You can pass
+    Load a component template and render it with the current context. You can pass
     additional context using keyword arguments.
-    Example::
-        {% include "foo/some_include" %}
-        {% include "foo/some_include" with bar="BAZZ!" baz="BING!" %}
-    Use the ``only`` argument to exclude the current context when rendering
-    the included template::
-        {% include "foo/some_include" only %}
-        {% include "foo/some_include" with bar="1" only %}
+
+    Example
+
+    .. code-block::
+
+        {% component %}{% endcomponent %}
+        {% component with bar="BAZZ!" baz="BING!" %}{% endcomponent %}
+
     """
     bits = token.split_contents()
 

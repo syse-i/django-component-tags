@@ -7,6 +7,46 @@ __all__ = ['Library']
 
 
 class Library(BaseLibrary):
+    """
+    A custom class for registering template components, tags and filters.
+    The filter, simple_tag, and inclusion_tag methods provide a convenient
+    way to register callables/components as tags.
+
+    Examples
+    --------
+    There is a lot of ways to register a component tag:
+
+    .. code-block:: python
+
+        register.tag('name', ComponentClass)
+
+        @register.tag
+        class ComponentClass:
+            pass
+
+        @register.tag()
+        class ComponentClass:
+            pass
+
+        @register.tag('name')
+        class ComponentClass:
+            pass
+
+        register.tag_function(ComponentClass)
+
+        register.component('name', ComponentClass)
+
+        @register.component
+        class ComponentClass:
+            pass
+
+    Notes
+    ----
+    - Pycharm doesnt recognize @register.component, therefore the recommended way to register all components
+    using Pycharm is with `register.tag('name', ComponentClass)`
+    - Does not interfere with the current Django Library behavior, but it decorates the callable function
+    with the component wrapper if this is a component tag.
+    """
 
     def tag_function(self, func):
         if isinstance(func, BaseComponent):

@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.template import loader
 
 from .template.choices import AttributeChoices
-from .template.attributes import BaseAttribute, Attribute
+from .template.attributes import Attribute
 from .template.builtins import register
 from .template.components import Slot
 
@@ -33,7 +33,7 @@ class AttributeTestCase(TestCase):
         self.choices = CustomChoices
 
     def test_is_instance(self):
-        self.assertIsInstance(Attribute, BaseAttribute)
+        self.assertIsInstance(Attribute(), Attribute)
 
     def test_choices(self):
         attr = Attribute(choices=self.choices)

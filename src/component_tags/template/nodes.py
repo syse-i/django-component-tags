@@ -4,7 +4,7 @@ from django.template.base import Node, NodeList
 
 __all__ = ['ComponentNode', 'BaseComponent']
 
-from .attributes import Attribute, BaseAttribute
+from .attributes import Attribute
 from .context import ComponentContext
 
 
@@ -78,13 +78,10 @@ class ComponentNode(Node, metaclass=BaseComponent):
         _context = self.get_context_data(copy(context))
 
         # Class attributes
-        class_attrs = list(filter(lambda x: isinstance(x[1], BaseAttribute), vars(self.__class__).items()))
+        class_attrs = list(filter(lambda x: isinstance(x[1], Attribute), vars(self.__class__).items()))
 
         while class_attrs:
             key, attr = class_attrs.pop()
-
-            if not isinstance(attr, Attribute):
-                raise AttributeError('Must be Attribute instance')
 
             if not attr.name:
                 attr.set_name(key)
