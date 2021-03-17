@@ -1,8 +1,9 @@
+from inspect import getmembers
 from copy import copy
 
 from django.template.base import Node, NodeList
 
-__all__ = ['ComponentNode', 'BaseComponent']
+__all__ = ['ComponentNode', 'BaseComponent', 'Meta']
 
 from .attributes import Attribute
 from .context import ComponentContext
@@ -12,9 +13,46 @@ class TemplateIsNull(Exception):
     pass
 
 
+class Meta(object):
+    """
+    Meta definition of component tags, currently only used to declare template information
+    """
+
+    def __init__(self, meta=None):
+        self.template_name = getattr(meta, 'template_name', None)
+
+
+def meta_property(cls):
+    """
+    Function used to inject the component's meta attr
+    """
+    def _meta(self):
+        # Get the meta property of the superclass, if it exists
+        sup_cls = super(cls, self)
+        try:
+            # noinspection PyUnresolvedReferences
+            base = sup_cls.meta
+        except AttributeError:
+            base = Meta()
+
+        # Get the meta definition for this class
+        definition = getattr(cls, 'Meta', None)
+        if definition:
+            return Meta(definition)
+        return base
+    return property(_meta)
+
+
 class BaseComponent(type):
     """Metaclass for all component nodes."""
-    pass
+
+    def __new__(mcs, name, bases, attrs):
+        new_class = super().__new__(mcs, name, bases, attrs)
+
+        if 'meta' not in attrs:
+            new_class.meta = meta_property(new_class)
+
+        return new_class
 
 
 class ComponentNode(Node, metaclass=BaseComponent):
@@ -33,17 +71,15 @@ class ComponentNode(Node, metaclass=BaseComponent):
         self.slots = slots
         self.options = options
         self.isolated_context = isolated_context
-        # TODO: understand metaclass
-        self._meta = getattr(self, 'Meta', object)
 
     def get_template_name(self):
-        return getattr(self._meta, 'template_name', None)
+        return getattr(self.meta, 'template_name', None)
 
     def get_template(self, context):
         template_name = self.get_template_name()
 
         if not template_name:
-            raise self.TemplateIsNull('Template is undefined')
+            raise self.TemplateIsNull(f'[{self.tag_name}] component does not have a template assigned.')
 
         return context.template.engine.get_template(template_name)
 
@@ -78,20 +114,21 @@ class ComponentNode(Node, metaclass=BaseComponent):
         _context = self.get_context_data(copy(context))
 
         # Class attributes
-        class_attrs = list(filter(lambda x: isinstance(x[1], Attribute), vars(self.__class__).items()))
+        # class_attrs = list(filter(lambda x: isinstance(x[1], Attribute), vars(self.__class__).items()))
+        class_attrs = getmembers(self, lambda a: isinstance(a, Attribute))
 
         while class_attrs:
             key, attr = class_attrs.pop()
 
-            if not attr.name:
-                attr.set_name(key)
+            if not attr.context_name:
+                attr.set_context_name(key)
 
             try:
                 value = attr.resolve(attrs.pop(key), context)
             except KeyError:
                 value = attr.default
 
-            key = attr.name
+            key = attr.context_name
 
             if attr.as_context:
                 _context[key] = value
