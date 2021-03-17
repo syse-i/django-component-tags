@@ -255,7 +255,7 @@ Output:
 
 
 Adding extra context
-------------------
+--------------------
 
 By default, all components used isolated context to work with. If you want to pass global context to the component tag
 it is required to use the ``with`` argument.
