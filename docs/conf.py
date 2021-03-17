@@ -34,6 +34,7 @@ sys.path.insert(0, os.path.join(__location__, "../src"))
 try:  # for Sphinx >= 1.7
     from sphinx.ext import apidoc
 except ImportError:
+    # noinspection PyUnresolvedReferences
     from sphinx import apidoc
 
 output_dir = os.path.join(__location__, "api")
