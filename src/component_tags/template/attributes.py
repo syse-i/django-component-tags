@@ -113,9 +113,9 @@ class Attribute:
     VariableDoesNotExist = VariableDoesNotExist
     RequiredValue = RequiredValue
 
-    def __init__(self, choices=None, default=None, required: bool = False, name: str = None,
+    def __init__(self, choices=None, default=None, required: bool = False, context_name: str = None,
                  as_class: bool = False, as_context: bool = False):
-        self.name = name
+        self.context_name = context_name
 
         if choices and not issubclass(choices, Enum):
             raise RequiredValue('choices must be a subclass of Enum')
@@ -162,10 +162,10 @@ class Attribute:
         Verify if the current value is valid based on different criteria
         """
         if self.required and value is None:
-            raise RequiredValue(f'{self.name} should be different than null')
+            raise RequiredValue(f'{self.context_name} should be different than null')
         return self.get_choice(value, raise_exception) if self.choices else value
 
-    def set_name(self, value: str):
+    def set_context_name(self, value: str):
         """
         The name of the attribute used as context name.
 
@@ -226,7 +226,7 @@ class Attribute:
                 <button data-href="#"></button>
 
         """
-        self.name = value
+        self.context_name = value
 
     def resolve(self, value: Union[Variable, FilterExpression, str], context, raise_exception: bool = True):
         """
