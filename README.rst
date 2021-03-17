@@ -180,7 +180,7 @@ Note that it was merged with all attribute classes previously declared.
 
 
 Using slot components
-------------------
+---------------------
 
 Lets make another html component using the `bootstrap framework <https://getbootstrap.com>`_,
 this one is going to be a ``Card`` component.
