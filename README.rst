@@ -12,7 +12,7 @@ Description
 The goal of this project is to use
 `Django Template Tags <https://docs.djangoproject.com/en/3.1/ref/templates/builtins/>`_ and create a new way of
 writing **reusable html components** compatible with the current template infrastructure. This new way should
-fit the Django standards of creating classes, like ``Models`` and ``Forms``, it should require as little boilerplate
+fit the Django standards of creating classes, like ``Models`` and ``Forms``, also it should require as little boilerplate
 code and be simple to write.
 
 Some features:
