@@ -2,9 +2,20 @@
 Changelog
 =========
 
-Version 0.1
+Version 0.0.3
+=============
+
+- Add an extendable components metaclass (Django way).
+- Change the regular name attribute to context_name, which it makes more sense.
+- Remove some unused app scripts.
+
+Version 0.0.2
+=============
+
+- Reformat the library with new standard specifications.
+- Fix the test environment
+
+Version 0.0.1
 ===========
 
-- Feature A added
-- FIX: nasty bug #1729 fixed
-- add your changes here!
+- Initial release
