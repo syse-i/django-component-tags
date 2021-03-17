@@ -2,7 +2,6 @@
 Django - Component Tags
 =======================
 
-
 Create advanced HTML components using Django Tags.
 
 
