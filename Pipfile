@@ -9,6 +9,11 @@ django = "*"
 [dev-packages]
 django-extensions = "*"
 django-debug-toolbar = "*"
+setuptools = "*"
+conf = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-django = "*"
 
 [requires]
 python_version = "3.9"

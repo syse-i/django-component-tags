@@ -1,7 +1,6 @@
 from django.template import Context
 from django.template.base import Variable
 from django.test import TestCase
-from django.template import loader
 
 from .template.choices import AttributeChoices
 from .template.attributes import Attribute
@@ -71,7 +70,7 @@ class AttributeTestCase(TestCase):
         self.assertRaises(Attribute.VariableDoesNotExist, test_func)
 
     def test_choices_are_required_and_value_is_none(self):
-        attr = Attribute(choices=self.choices, required=True, name='attr')
+        attr = Attribute(choices=self.choices, required=True)
 
         def test_func():
             try:
