@@ -17,7 +17,7 @@ jobs:
         python-version: 3.8
     - name: Generate coverage report
       run: |
-        pip install pytest pytest-django pytest-cov
+        pip install -r requirements.txt
         pytest --cov src/component_tags --cov-report html
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
