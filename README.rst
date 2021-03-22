@@ -2,14 +2,10 @@
 Django - Component Tags
 =======================
 
-.. image:: https://coveralls.io/repos/github/syse-i/django-component-tags/badge.svg
-    :target: https://coveralls.io/github/syse-i/django-component-tags
-
-.. image:: https://static.pepy.tech/personalized-badge/django-component-tags?period=total&units=international_system&left_color=black&right_color=brightgreen&left_text=Downloads
-    :target: https://pepy.tech/project/django-component-tags
-
 .. image:: https://img.shields.io/github/workflow/status/syse-i/django-component-tags/Run%20tests
     :alt: GitHub Workflow Status
+.. image:: https://static.pepy.tech/personalized-badge/django-component-tags?period=total&units=international_system&left_color=black&right_color=brightgreen&left_text=Downloads
+    :target: https://pepy.tech/project/django-component-tags
 
 Create advanced HTML components using Django Tags.
 
