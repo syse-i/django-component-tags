@@ -41,10 +41,15 @@ class AttributeTestCase(TestCase):
         self.assertEqual(attr.resolve(x, c), 'bar')
 
     def test_choice_does_not_exist(self):
-        attr = Attribute(choices=self.choices)
+        attr = Attribute(choices=self.choices, required=True)
         x = Variable('attr')
         c = Context({'attr': 'ERROR'})
         self.assertRaises(Attribute.ChoiceDoesNotExist, lambda: attr.resolve(x, c))
+
+        attr = Attribute(choices=self.choices, required=True)
+        x = Variable('attr')
+        c = Context({'attr': 'ERROR'})
+        self.assertRaises(Attribute.ChoiceDoesNotExist, lambda: attr.get_choice('x', raise_exception=True))
 
     def test_choices_default(self):
         attr = Attribute(choices=self.choices, default=self.choices.foo)
@@ -81,6 +86,24 @@ class AttributeTestCase(TestCase):
                 return attr.default
 
         self.assertRaises(Attribute.RequiredValue, test_func)
+
+    def test_choices_are_not_enum_type(self):
+        class Choices:
+            bar = 1
+
+        def test_with_class():
+            return Attribute(choices=Choices)
+
+        def test_with_list():
+            return Attribute(choices=[{'foo': 'bar'}])
+
+        self.assertRaises(Attribute.RequiredValue, test_with_class)
+        self.assertRaises(Attribute.RequiredValue, test_with_list)
+
+    def test_set_context_name(self):
+        attr = Attribute(choices=self.choices)
+        attr.set_context_name('foo')
+        self.assertEqual(attr.context_name, 'foo')
 
 
 class BuiltinsTestCase(TestCase):

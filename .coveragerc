@@ -5,10 +5,7 @@ source = component_tags
 # omit = bad_file.py
 
 [paths]
-source =
-    src/
-    */site-packages/
-
+source = src/component_tags/
 [report]
 # Regexes for lines to exclude from consideration
 exclude_lines =

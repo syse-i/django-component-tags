@@ -117,8 +117,11 @@ class Attribute:
                  as_class: bool = False, as_context: bool = False):
         self.context_name = context_name
 
-        if choices and not issubclass(choices, Enum):
-            raise RequiredValue('choices must be a subclass of Enum')
+        try:
+            if choices and not issubclass(choices, Enum):
+                raise RequiredValue("choices must be Enum's subclass")
+        except TypeError:
+            raise RequiredValue("choices must be Enum's subclass")
 
         self.choices = choices
         self.required = required
@@ -143,7 +146,7 @@ class Attribute:
         """
         return [key for key, value in self.choices.__members__.items()]
 
-    def get_choice(self, key: Enum, raise_exception: bool = False):
+    def get_choice(self, key: Union[Enum, str], raise_exception: bool = False):
         """
         Get the member choice value using the Enum format
         """
