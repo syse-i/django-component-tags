@@ -8,6 +8,9 @@ Django - Component Tags
 .. image:: https://static.pepy.tech/personalized-badge/django-component-tags?period=total&units=international_system&left_color=black&right_color=brightgreen&left_text=Downloads
     :target: https://pepy.tech/project/django-component-tags
 
+.. image:: https://img.shields.io/github/workflow/status/syse-i/django-component-tags/Run%20tests
+    :alt: GitHub Workflow Status
+
 Create advanced HTML components using Django Tags.
 
 
