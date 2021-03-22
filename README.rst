@@ -2,10 +2,23 @@
 Django - Component Tags
 =======================
 
-.. image:: https://img.shields.io/github/workflow/status/syse-i/django-component-tags/Run%20tests
-    :alt: GitHub Workflow Status
-.. image:: https://static.pepy.tech/personalized-badge/django-component-tags?period=total&units=international_system&left_color=black&right_color=brightgreen&left_text=Downloads
-    :target: https://pepy.tech/project/django-component-tags
+:Test Status:
+    .. image:: https://img.shields.io/github/workflow/status/syse-i/django-component-tags/Run%20tests
+        :alt: GitHub Workflow Status
+
+:Version Info:
+    .. image:: https://img.shields.io/pypi/v/django-component-tags?label=PyPi
+        :alt: PyPI
+
+    .. image:: https://img.shields.io/pypi/dm/django-component-tags?label=Downloads&style=flat-square   :alt: PyPI - Downloads
+
+:Compatibility:
+    .. image:: https://img.shields.io/pypi/pyversions/django-component-tags?style=flat-square&label=Python%20Versions
+        :target: https://pypi.org/project/coveralls/
+
+    .. image:: https://img.shields.io/pypi/djversions/django-component-tags?label=Django%20Versions&style=flat-square
+        :alt: PyPI - Django Version
+
 
 Create advanced HTML components using Django Tags.
 
