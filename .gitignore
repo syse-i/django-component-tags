@@ -57,6 +57,5 @@ MANIFEST
 /*.sqlite3
 /static/
 /templatetags/test_tags.py
-/config/
 /templates/*
 /htmlcov/
