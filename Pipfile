@@ -16,6 +16,7 @@ conf = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-django = "*"
+config = "*"
 
 [requires]
 python_version = "3.9"
