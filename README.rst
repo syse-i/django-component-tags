@@ -10,7 +10,8 @@ Django - Component Tags
     .. image:: https://img.shields.io/pypi/v/django-component-tags?label=PyPi
         :alt: PyPI
 
-    .. image:: https://img.shields.io/pypi/dm/django-component-tags?label=Downloads&style=flat-square   :alt: PyPI - Downloads
+    .. image:: https://img.shields.io/pypi/dm/django-component-tags?label=Downloads&style=flat-square   
+        :alt: PyPI - Downloads
 
 :Compatibility:
     .. image:: https://img.shields.io/pypi/pyversions/django-component-tags?style=flat-square&label=Python%20Versions
