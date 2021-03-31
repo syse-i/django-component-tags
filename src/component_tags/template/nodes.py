@@ -1,33 +1,36 @@
 from inspect import getmembers
 from copy import copy
 
+from django.forms.widgets import Media
 from django.template.base import Node, NodeList
 
-__all__ = ['ComponentNode', 'BaseComponent', 'Meta']
-
+from .media import add_media
 from .attributes import Attribute
 from .context import ComponentContext
+
+
+__all__ = ['ComponentNode', 'BaseComponent', 'Meta', 'Media']
 
 
 class TemplateIsNull(Exception):
     pass
 
 
-class Meta(object):
+class Meta(Media):
     """
     Meta definition of component tags, currently only used to declare template information
     """
-
-    def __init__(self, meta=None):
+    def __init__(self, meta=None, css=None, js=None):
+        super().__init__(meta, css, js)
         self.template_name = getattr(meta, 'template_name', None)
 
 
 def meta_property(cls):
     """
-    Function used to inject the component's meta attr
+    Get the media property of the superclass, if it exists
     """
     def _meta(self):
-        # Get the meta property of the superclass, if it exists
+
         sup_cls = super(cls, self)
         try:
             # noinspection PyUnresolvedReferences
@@ -35,10 +38,26 @@ def meta_property(cls):
         except AttributeError:
             base = Meta()
 
-        # Get the meta definition for this class
+        # Get the media definition for this class
         definition = getattr(cls, 'Meta', None)
+
         if definition:
-            return Meta(definition)
+            extend = getattr(definition, 'extend', True)
+            if extend:
+                if extend is True:
+                    m = base
+                else:
+                    m = Meta()
+                    for medium in extend:
+                        m = m + base[medium]
+                extended = m + Meta(definition)
+            else:
+                extended = Meta(definition)
+
+            template_name = getattr(definition, 'template_name', None)
+            if template_name:
+                setattr(extended, 'template_name', template_name)
+            return extended
         return base
     return property(_meta)
 
@@ -79,7 +98,7 @@ class ComponentNode(Node, metaclass=BaseComponent):
         template_name = self.get_template_name()
 
         if not template_name:
-            raise self.TemplateIsNull(f'[{self.tag_name}] component does not have a template assigned.')
+            raise self.TemplateIsNull(f'[{self.tag_name.title()}] component does not have a template assigned.')
 
         return context.template.engine.get_template(template_name)
 
@@ -87,6 +106,7 @@ class ComponentNode(Node, metaclass=BaseComponent):
         return ComponentContext(self.nodelist, initial=context, isolated=self.isolated_context)
 
     def render(self, context):
+        add_media(context, self.meta)
         template = self.get_template(context)
 
         # Does this quack like a Template?
@@ -114,7 +134,6 @@ class ComponentNode(Node, metaclass=BaseComponent):
         _context = self.get_context_data(copy(context))
 
         # Class attributes
-        # class_attrs = list(filter(lambda x: isinstance(x[1], Attribute), vars(self.__class__).items()))
         class_attrs = getmembers(self, lambda a: isinstance(a, Attribute))
 
         while class_attrs:

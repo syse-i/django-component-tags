@@ -15,3 +15,6 @@ except PackageNotFoundError:  # pragma: no cover
     __version__ = "unknown"
 finally:
     del version, PackageNotFoundError
+
+
+default_app_config = 'component_tags.apps.ComponentTagsConfig'
