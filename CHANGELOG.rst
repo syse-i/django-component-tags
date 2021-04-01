@@ -2,6 +2,17 @@
 Changelog
 =========
 
+Version 0.0.5
+=============
+
+- Media class implementation
+
+Version 0.0.4
+=============
+
+- Minimal environment version (stable)
+- Fix attribute tests
+
 Version 0.0.3
 =============
 
