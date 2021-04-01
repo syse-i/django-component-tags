@@ -139,6 +139,15 @@ This is the simplest way to start, there is a lot of different settings that you
 html components.
 
 
+Considerations
+==============
+
+Using cache interferes with the ``Media Class Library`` when you are making multiple changes on html components,
+which i believe its good on production. On development environments Django recommends to use
+`DummyCache <https://docs.djangoproject.com/en/3.1/topics/cache/#dummy-caching-for-development>`_. If you are using
+any cache backend take this consideration to work locally.
+
+
 Examples
 ========
 
