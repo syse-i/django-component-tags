@@ -143,9 +143,20 @@ Considerations
 ==============
 
 Using cache interferes with the ``Media Class Library`` when you are making multiple changes on html components,
-which i believe its good on production. On development environments Django recommends to use
-`DummyCache <https://docs.djangoproject.com/en/3.1/topics/cache/#dummy-caching-for-development>`_. If you are using
-any cache backend take this consideration to work locally.
+which i believe its good on **production**. Django recommends to set up
+`DummyCache <https://docs.djangoproject.com/en/3.1/topics/cache/#dummy-caching-for-development>`_
+on **development** environments:
+
+.. code-block:: python
+
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        }
+    }
+
+
+If you are using any cache backend take this consideration to work with this library locally.
 
 
 Examples
