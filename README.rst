@@ -29,7 +29,8 @@ Description
 
 The goal of this project is to use
 `Django Template Tags <https://docs.djangoproject.com/en/3.1/ref/templates/builtins/>`_ and create a new way of
-writing **reusable html components**. This new way should fit the Django standards of creating classes, like ``Models`` and ``Forms``.
+writing **reusable html components**. This new way should fit the Django standards of creating classes,
+like ``Models`` and ``Forms``.
 
 Some features:
 
@@ -38,6 +39,7 @@ Some features:
 * Declarative component attributes.
 * Extendable components.
 * Slot components.
+* css/js media implementation (`Django Form Media class <https://docs.djangoproject.com/en/3.1/topics/forms/media/>`_)
 
 .. note::
 
@@ -140,6 +142,83 @@ html components.
 Examples
 ========
 
+Adding css/js scripts
+---------------------
+
+Assuming that we already downloaded a css framework in our project like `BootstrapCSS <https://getbootstrap.com>`_.
+
+Lets create a component:
+
+.. code-block:: python
+
+    # foo/templatetags/foo_tags.py
+    from component_tags import template
+
+    register = template.Library()
+
+    @register.tag
+    class Link(template.Component):
+        href = template.Attribute(default='#')
+
+        class Meta:
+            template_name = 'tags/link.html'
+            css = {
+                'all': ('css/bootstrap.min.css',)
+            }
+            js = [
+                'js/bootstrap.bundle.min.js',
+            ]
+
+
+Rendering the component in our main template:
+
+.. code-block::
+
+    # foo/templates/foo/index.html
+    {% load foo_tags %}
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>---</title>
+        <meta name="description" content="---">
+        <meta name="author" content="---">
+        {% components_css %}
+    </head>
+
+    <body>
+    {% link %}
+        Link 1
+    {% endlink %}
+    {% components_js %}
+    </body>
+    </html>
+
+Output:
+
+.. code-block::
+
+    # foo/templates/foo/index.html
+    {% load foo_tags %}
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>---</title>
+        <meta name="description" content="---">
+        <meta name="author" content="---">
+        <link href="/static/css/bootstrap.min.css" type="text/css" media="all" rel="stylesheet">
+    </head>
+
+    <body>
+    <a class="btn btn-primary" href="#">
+        Link 1
+    </a>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
+
+
 Adding css classes
 ------------------
 
@@ -167,6 +246,12 @@ Lets create a html component using the `bootstrap framework <https://getbootstra
 
         class Meta:
             template_name = 'tags/link.html'
+            css = {
+                'all': ('css/bootstrap.min.css',)
+            }
+            js = [
+                'js/bootstrap.bundle.min.js',
+            ]
 
 Rendering the component:
 
@@ -174,10 +259,24 @@ Rendering the component:
 
     # foo/templates/foo/index.html
     {% load foo_tags %}
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>---</title>
+        <meta name="description" content="---">
+        <meta name="author" content="---">
+        {% components_css %}
+    </head>
 
+    <body>
     {% link color="primary" class="foo-bar" %}
         Link 1
     {% endlink %}
+
+    {% components_js %}
+    </body>
+    </html>
 
 Also we added the ``class`` argument to the component tag, so even if the components strictly have class attributes,
 you will always have a flexible way to customize your components any time in different scenarios.
@@ -187,10 +286,24 @@ Output:
 .. code-block::
 
     # foo/templates/foo/index.html
+    {% load foo_tags %}
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>---</title>
+        <meta name="description" content="---">
+        <meta name="author" content="---">
+        <link href="/static/css/bootstrap.min.css" type="text/css" media="all" rel="stylesheet">
+    </head>
 
+    <body>
     <a class="btn btn-primary foo-bar" href="#">
         Link 1
     </a>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
 
 Note that it was merged with all attribute classes previously declared.
 
@@ -210,7 +323,7 @@ this one is going to be a ``Card`` component.
 
     @register.tag
     class Card(template.Component):
-        title = template.Attribute(as_context=True)
+        title = template.Attribute(required=True, as_context=True)
 
         class Meta:
             template_name = 'tags/card.html'
