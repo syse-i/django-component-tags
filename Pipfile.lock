@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "53155df47e39d6f369a503b315c8131b032d8a074522049ad2cf8142a103dd49"
+            "sha256": "4d623292409b737ae2b4ec8075511d6ef21c51c5604c8240f72c6f3dc5412d5a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -225,6 +225,14 @@
             "index": "pypi",
             "version": "==4.1.0"
         },
+        "python-memcached": {
+            "hashes": [
+                "sha256:4dac64916871bd3550263323fc2ce18e1e439080a2d5670c594cf3118d99b594",
+                "sha256:a2e28637be13ee0bf1a8b6843e7490f9456fd3f2a4cb60471733c7b5d5557e4f"
+            ],
+            "index": "pypi",
+            "version": "==1.59"
+        },
         "pytz": {
             "hashes": [
                 "sha256:83a4a90894bf38e243cf052c8b58f381bfe9a7a483f6a9cab140bc7f702ac4da",
@@ -239,6 +247,14 @@
             ],
             "index": "pypi",
             "version": "==6.0.1"
+        },
+        "six": {
+            "hashes": [
+                "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259",
+                "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==1.15.0"
         },
         "sqlparse": {
             "hashes": [
