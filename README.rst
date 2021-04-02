@@ -20,7 +20,6 @@ Django - Component Tags
     .. image:: https://img.shields.io/pypi/djversions/django-component-tags?label=Django%20Versions&style=flat-square
         :alt: PyPI - Django Version
 
-
 Create advanced HTML components using Django Tags.
 
 
@@ -29,7 +28,7 @@ Description
 
 The goal of this project is to use
 `Django Template Tags <https://docs.djangoproject.com/en/3.1/ref/templates/builtins/>`_ and create a new way of
-writing **reusable html components**. This new way should fit the Django standards of creating classes,
+writing **reusable html components**, this new way should fit the Django standards of creating classes,
 like ``Models`` and ``Forms``.
 
 Some features:
@@ -39,7 +38,7 @@ Some features:
 * Declarative component attributes.
 * Extendable components.
 * Slot components.
-* css/js media implementation (`Django Form Media class <https://docs.djangoproject.com/en/3.1/topics/forms/media/>`_)
+* Media class (css/js) implementation (`Django Form-Media class <https://docs.djangoproject.com/en/3.1/topics/forms/media/>`_)
 
 .. note::
 
@@ -88,7 +87,6 @@ called **foo**, lets create a new component tag:
 
         class Meta:
             template_name = 'tags/link.html'
-
 
 
 .. note::
@@ -155,8 +153,7 @@ on **development** environments:
         }
     }
 
-
-If you are using any cache backend take this consideration to work with this library locally.
+If you are using any cache's backend take this consideration to work with this library locally.
 
 
 Examples
@@ -165,7 +162,7 @@ Examples
 Adding css/js scripts
 ---------------------
 
-Assuming that we already downloaded a css framework in our project like `BootstrapCSS <https://getbootstrap.com>`_.
+Assuming that you already downloaded a css framework in your project like `BootstrapCSS <https://getbootstrap.com>`_.
 
 Lets create a component:
 
