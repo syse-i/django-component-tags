@@ -71,6 +71,19 @@ Add it to ``INSTALLED_APPS``.
         ...
     ]
 
+    ...
+
+    TEMPLATES = [
+        {
+            'OPTIONS': {
+                'builtins': ['component_tags.template.builtins'],
+            },
+        },
+    ]
+
+    ...
+
+
 Assuming that we already have an `application <https://docs.djangoproject.com/en/3.1/intro/tutorial01/>`_
 called **foo**, lets create a new component tag:
 
