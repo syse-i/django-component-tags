@@ -48,7 +48,7 @@ Some features:
 
 Libraries created with ``django-component-tags``:
 
-* `TailwindCss <https://github.com/syse-i/django-component-tags-tailwindcss>`_
+* `django-component-tags-tailwindcss <https://github.com/syse-i/django-component-tags-tailwindcss>`_
 
 Requirements
 ============
