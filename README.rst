@@ -10,7 +10,7 @@ Django - Component Tags
     .. image:: https://img.shields.io/pypi/v/django-component-tags?label=PyPi
         :alt: PyPI
 
-    .. image:: https://img.shields.io/pypi/dm/django-component-tags?label=Downloads&style=flat-square   
+    .. image:: https://img.shields.io/pypi/dm/django-component-tags?label=Downloads&style=flat-square
         :alt: PyPI - Downloads
 
 :Compatibility:
@@ -46,6 +46,10 @@ Some features:
     `Web Components spec draft <https://github.com/WICG/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md>`_,
     using the ``{% slot %}`` component inside another component to serve as distribution outlets for content.
 
+Libraries created with ``django-component-tags``:
+
+* `TailwindCss <https://github.com/syse-i/django-component-tags-tailwindcss>`_
+
 Requirements
 ============
 
@@ -55,13 +59,13 @@ Requires Django 2.2 or newer, and is tested against Python 3.7 and PyPy.
 Quick Start
 ===========
 
-First, install the library:
+Install the library:
 
 .. code-block::
 
     pip3 install django-component-tags
 
-Add it to ``INSTALLED_APPS``.
+Update your ``settings.py``:
 
 .. code-block::
 
@@ -84,7 +88,7 @@ Add it to ``INSTALLED_APPS``.
     ...
 
 
-Assuming that we already have an `application <https://docs.djangoproject.com/en/3.1/intro/tutorial01/>`_
+Assuming that you already have an `application <https://docs.djangoproject.com/en/3.1/intro/tutorial01/>`_
 called **foo**, lets create a new component tag:
 
 .. code-block:: python
@@ -107,10 +111,10 @@ called **foo**, lets create a new component tag:
     **django-component-tags** extends the default django template library, because it wraps component classes with a parser
     function and extracts template tag arguments, everything else is left in the same way.
 
-    Please check out `the repository <https://github.com/syse-i/django-component-tags/blob/main/src/component_tags/template/library.py>`_
+    Please check out `the template library <https://github.com/syse-i/django-component-tags/blob/main/src/component_tags/template/library.py>`_
     if you want to know more about this process.
 
-Next step, creating the component template:
+Next, creating the component template:
 
 .. code-block::
 
@@ -120,12 +124,12 @@ Next step, creating the component template:
         {{ nodelist }}
     </a>
 
-Here we defined a couple of variables that we can use inside a component template:
+Here we have a couple of variables inside a component template:
 
 * **attributes**: component template/class attributes (formatted).
 * **nodelist**: the content created between ``{% link %}`` and ``{% endlink %}`` will be rendered here.
 
-Finally, we can use it as follows:
+Finally, you can use it as follows:
 
 .. code-block::
 
@@ -153,7 +157,7 @@ html components.
 Considerations
 ==============
 
-Using cache interferes with the ``Media Class Library`` when you are making multiple changes on html components,
+Making multiple changes on html components and using cache interferes with the ``Media Class Library``,
 which i believe its good on **production**. Django recommends to set up
 `DummyCache <https://docs.djangoproject.com/en/3.1/topics/cache/#dummy-caching-for-development>`_
 on **development** environments:
@@ -165,8 +169,6 @@ on **development** environments:
             'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
         }
     }
-
-If you are using any cache's backend take this consideration to work with this library locally.
 
 
 Examples
@@ -200,7 +202,7 @@ Lets create a component:
             ]
 
 
-Rendering the component in our main template:
+Rendering the component in the main template:
 
 .. code-block::
 
