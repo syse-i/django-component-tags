@@ -46,9 +46,14 @@ Some features:
     `Web Components spec draft <https://github.com/WICG/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md>`_,
     using the ``{% slot %}`` component inside another component to serve as distribution outlets for content.
 
+
+Libraries
+=========
+
 Libraries created with ``django-component-tags``:
 
 * `django-component-tags-tailwindcss <https://github.com/syse-i/django-component-tags-tailwindcss>`_
+
 
 Requirements
 ============
