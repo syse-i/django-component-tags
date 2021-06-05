@@ -1,12 +1,12 @@
 -i https://pypi.org/simple/
 asgiref==3.3.4
-attrs==20.3.0
+attrs==21.2.0
 conf==0.4.1
 config==0.5.0.post0
 coverage==5.5
 django-debug-toolbar==3.2
 django-extensions==3.1.1
-django==3.1.8
+django==3.1.9
 iniconfig==1.1.1
 packaging==20.9
 pluggy==0.13.1
@@ -18,7 +18,7 @@ pytest==6.2.2
 python-memcached==1.59
 pytz==2021.1
 setuptools-scm==6.0.1
-six==1.15.0
+six==1.16.0
 sqlparse==0.4.1
 toml==0.10.2
 wheel==0.36.2

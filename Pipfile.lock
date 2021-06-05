@@ -25,11 +25,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:c348b3ddc452bf4b62361f0752f71a339140c777ebea3cdaaaa8fdb7f417a862",
-                "sha256:f8393103e15ec2d2d313ccbb95a3f1da092f9f58d74ac1c61ca2ac0436ae1eac"
+                "sha256:296d10092561a1cf16100885b935dc56cf09c8ccb114e64004554941677c6342",
+                "sha256:f5c3f1ce2473abf2f35d992c46d5534e53bd3397867689bde28fd29e856b46b7"
             ],
             "index": "pypi",
-            "version": "==3.1.8"
+            "version": "==3.1.9"
         },
         "pytz": {
             "hashes": [
@@ -56,10 +56,10 @@
         },
         "attrs": {
             "hashes": [
-                "sha256:31b2eced602aa8423c2aea9c76a724617ed67cf9513173fd3a4f03e3a929c7e6",
-                "sha256:832aa3cde19744e49938b91fea06d69ecb9e649c93ba974535d08ad92164f700"
+                "sha256:149e90d6d8ac20db7a955ad60cf0e6881a3f20d37096140088356da6c716b0b1",
+                "sha256:ef6aaac3ca6cd92904cdd0d83f629a15f18053ec84e6432106f7a4d04ae4f5fb"
             ],
-            "version": "==20.3.0"
+            "version": "==21.2.0"
         },
         "conf": {
             "hashes": [
@@ -135,11 +135,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:c348b3ddc452bf4b62361f0752f71a339140c777ebea3cdaaaa8fdb7f417a862",
-                "sha256:f8393103e15ec2d2d313ccbb95a3f1da092f9f58d74ac1c61ca2ac0436ae1eac"
+                "sha256:296d10092561a1cf16100885b935dc56cf09c8ccb114e64004554941677c6342",
+                "sha256:f5c3f1ce2473abf2f35d992c46d5534e53bd3397867689bde28fd29e856b46b7"
             ],
             "index": "pypi",
-            "version": "==3.1.8"
+            "version": "==3.1.9"
         },
         "django-debug-toolbar": {
             "hashes": [
@@ -241,10 +241,10 @@
         },
         "six": {
             "hashes": [
-                "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259",
-                "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
+                "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
+                "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"
             ],
-            "version": "==1.15.0"
+            "version": "==1.16.0"
         },
         "sqlparse": {
             "hashes": [
