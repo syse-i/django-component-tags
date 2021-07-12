@@ -26,18 +26,18 @@ Create advanced HTML components using Django Tags.
 Description
 ===========
 
-The goal of this project is to use
-`Django Template Tags <https://docs.djangoproject.com/en/3.1/ref/templates/builtins/>`_ and create a new way of
-writing **reusable html components**, this new way should fit the Django standards of creating classes,
-like ``Models`` and ``Forms``.
+Use `Django Template Tags <https://docs.djangoproject.com/en/3.1/ref/templates/builtins/>`_ and write
+**reusable html components**.
 
-Some features:
+
+Features
+========
 
 * Class based template tags.
 * Template tag argument parser.
 * Declarative component attributes.
 * Extendable components.
-* Slot components.
+* Embedded slot components.
 * Media class (css/js) implementation (`Django Form-Media class <https://docs.djangoproject.com/en/3.1/topics/forms/media/>`_)
 
 .. note::
@@ -47,8 +47,8 @@ Some features:
     using the ``{% slot %}`` component inside another component to serve as distribution outlets for content.
 
 
-Libraries
-=========
+Extra
+=====
 
 Libraries created with ``django-component-tags``:
 
@@ -58,7 +58,7 @@ Libraries created with ``django-component-tags``:
 Requirements
 ============
 
-Requires Django 2.2 or newer, and is tested against Python 3.7 and PyPy.
+Requires Django 2.2 or newer, tested against Python 3.7 and PyPy.
 
 
 Quick Start
@@ -85,7 +85,7 @@ Update your ``settings.py``:
     TEMPLATES = [
         {
             'OPTIONS': {
-                'builtins': ['component_tags.template.builtins'],
+                'builtins': ['component_tags.template.builtins'], # slot component
             },
         },
     ]
