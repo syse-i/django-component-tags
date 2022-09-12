@@ -108,7 +108,7 @@ called **foo**, lets create a new component tag:
         href = template.Attribute(default='#')
 
         class Meta:
-            template_name = 'tags/link.html'
+            template_name = 'foo/tags/link.html'
 
 
 .. note::
