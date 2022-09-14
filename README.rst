@@ -457,6 +457,29 @@ Assuming that the request of the page will be something like ``http://localhost:
 
     ``Slot`` components doesn't need to specify global context, they always use the parent context as default.
 
+Running tests
+=============
+
+Install the dependencies with pip:
+
+.. code-block::
+
+    pip3 install -r requirements.dev.txt
+    python3 manage.py test
+
+Or with Pipenv
+
+.. code-block::
+
+    pipenv install --dev
+    python3 manage.py test
+
+
+To run Django's test suite:
+
+    Follow the instructions in the "Unit tests" section of docs/internals/contributing/writing-code/unit-tests.txt, published online at https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/unit-tests/#running-the-unit-tests
+
+
 .. _pyscaffold-notes:
 
 Note
